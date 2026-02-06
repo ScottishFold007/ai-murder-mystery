@@ -317,7 +317,7 @@ make setup         # 一键设置（安装工具 + 依赖）
 
 ## 联系方式
 
-<img alt="个人微信 " src="微信.jpg" width="80%">
+<img alt="个人微信 " src="微信.png" width="80%">
 ## 致谢
 
 本项目基于 [AI Murder Mystery Hackathon](https://github.com/ironman5366/ai-murder-mystery-hackathon) 项目开发，原始项目由 [Paul Scotti](https://paulscotti.github.io/) 和 [Will Beddow](https://www.willbeddow.com/) 创建。
