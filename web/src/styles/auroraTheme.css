@@ -1,0 +1,218 @@
+/* 神秘极光主题样式 */
+
+/* 全局极光背景 */
+.aurora-background {
+  background: 
+    linear-gradient(135deg, 
+      #0a0a23 0%, 
+      #1a1a3e 15%, 
+      #2d1b69 30%, 
+      #1e3a5f 45%, 
+      #0f2027 60%, 
+      #203a43 75%, 
+      #2c5364 90%, 
+      #0f3460 100%
+    ),
+    radial-gradient(ellipse at top left, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, rgba(255, 3, 112, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(0, 194, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(142, 45, 226, 0.3) 0%, transparent 50%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 极光动态效果层 */
+.aurora-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(0, 255, 150, 0.1) 50%, 
+    transparent 70%
+  );
+  animation: aurora 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 星光效果层 */
+.aurora-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 40% 70%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 90% 40%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 60% 10%, rgba(0, 194, 255, 0.7), transparent);
+  background-size: 300px 300px, 200px 200px, 400px 400px, 250px 250px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 极光玻璃态卡片 */
+.aurora-card {
+  background: linear-gradient(135deg, 
+    rgba(10, 10, 35, 0.95) 0%, 
+    rgba(26, 26, 62, 0.95) 25%, 
+    rgba(45, 27, 105, 0.95) 50%, 
+    rgba(30, 58, 95, 0.95) 75%, 
+    rgba(15, 32, 39, 0.95) 100%
+  );
+  border: 2px solid rgba(0, 194, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 
+    0 0 40px rgba(0, 194, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 极光文字样式 */
+.aurora-title {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  text-shadow: 
+    0 0 20px rgba(0, 194, 255, 0.8),
+    0 0 40px rgba(0, 194, 255, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+  letter-spacing: 2px;
+}
+
+.aurora-subtitle {
+  color: #F0F0F0 !important;
+  font-weight: 500 !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+  letter-spacing: 1px;
+}
+
+.aurora-text {
+  color: #FFFFFF !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.aurora-text-secondary {
+  color: #E0E0E0 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 极光按钮样式 */
+.aurora-button-primary {
+  background: linear-gradient(135deg, #00C2FF 0%, #0099CC 100%) !important;
+  border: 2px solid #00C2FF !important;
+  color: #FFFFFF !important;
+  font-weight: bold !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3) !important;
+}
+
+.aurora-button-primary:hover {
+  background: linear-gradient(135deg, #0099CC 0%, #0077AA 100%) !important;
+  box-shadow: 0 6px 20px rgba(0, 194, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.aurora-button-secondary {
+  background: linear-gradient(135deg, #4ECCA3 0%, #3BB89A 100%) !important;
+  border: 2px solid #4ECCA3 !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+
+.aurora-button-danger {
+  background: linear-gradient(135deg, #E63946 0%, #CC2936 100%) !important;
+  border: 2px solid #E63946 !important;
+  color: #FFFFFF !important;
+  font-weight: bold !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 极光输入框样式 */
+.aurora-input {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid #555 !important;
+  border-radius: 8px !important;
+  color: #FFFFFF !important;
+  font-size: 14px !important;
+  padding: 12px !important;
+}
+
+.aurora-input:focus {
+  border-color: #00C2FF !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 0 10px rgba(0, 194, 255, 0.3) !important;
+}
+
+.aurora-input::placeholder {
+  color: #999 !important;
+}
+
+/* 动画定义 */
+@keyframes aurora {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(100px) rotate(5deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
+
+/* 确保内容在背景效果之上 */
+.aurora-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 侧边栏样式 */
+.aurora-sidebar {
+  background: linear-gradient(180deg, 
+    rgba(10, 10, 35, 0.98) 0%, 
+    rgba(26, 26, 62, 0.98) 50%, 
+    rgba(15, 32, 39, 0.98) 100%
+  ) !important;
+  border-right: 2px solid rgba(0, 194, 255, 0.5) !important;
+  backdrop-filter: blur(15px);
+}
+
+/* Header样式 */
+.aurora-header {
+  background: linear-gradient(135deg, 
+    rgba(10, 10, 35, 0.95) 0%, 
+    rgba(26, 26, 62, 0.95) 50%, 
+    rgba(15, 32, 39, 0.95) 100%
+  ) !important;
+  border-bottom: 2px solid rgba(0, 194, 255, 0.8) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 194, 255, 0.3) !important;
+}

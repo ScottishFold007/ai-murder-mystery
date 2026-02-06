@@ -1,0 +1,14 @@
+mistralai
+python-dotenv
+anthropic
+psycopg[pool,binary]
+openai
+requests
+exceptiongroup
+json-repair
+sqlalchemy
+fastapi
+uvicorn
+python-multipart
+markdown2
+pydantic

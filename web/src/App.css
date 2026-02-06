@@ -1,0 +1,626 @@
+/* 暗黑深邃·科技悬疑风主题 */
+
+:root {
+  /* 主色调 */
+  --primary-dark: #121212;
+  --secondary-dark: #1A1A2E;
+  --card-background: #1E1E1E;
+  
+  /* 辅助色/强调色 */
+  --cyber-blue: #00C2FF;
+  --investigation-amber: #FFB74D;
+  --truth-crimson: #E63946;
+  --tech-green: #4ECCA3;
+  
+  /* 文字色 */
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0E0E0;
+  --text-muted: #BDBDBD;
+  --text-disabled: #757575;
+  
+  /* 边框和分割线 */
+  --border-primary: #00C2FF;
+  --border-secondary: #4ECCA3;
+  --border-muted: #333333;
+  
+  /* 阴影 */
+  --shadow-cyber: 0 0 20px rgba(0, 194, 255, 0.3);
+  --shadow-amber: 0 0 15px rgba(255, 183, 77, 0.4);
+  --shadow-crimson: 0 0 15px rgba(230, 57, 70, 0.4);
+  --shadow-dark: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* 全局样式重置 */
+* {
+  box-sizing: border-box;
+}
+
+/* 旋转动画 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* 主应用容器 */
+.App {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #0A0A0A 100%);
+  min-height: 100vh;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyber-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tech-green);
+}
+
+/* 卡片样式 */
+.mystery-card {
+  background: var(--secondary-dark);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-cyber);
+  transition: all 0.3s ease;
+}
+
+.mystery-card:hover {
+  box-shadow: var(--shadow-cyber), var(--shadow-dark);
+  transform: translateY(-2px);
+}
+
+/* 按钮样式 */
+.btn-cyber {
+  background: linear-gradient(45deg, var(--cyber-blue), var(--tech-green));
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-cyber);
+}
+
+.btn-cyber:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-cyber), var(--shadow-dark);
+}
+
+.btn-amber {
+  background: linear-gradient(45deg, var(--investigation-amber), #FF9800);
+  border: none;
+  color: var(--primary-dark);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-amber);
+}
+
+.btn-amber:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-amber), var(--shadow-dark);
+}
+
+.btn-crimson {
+  background: linear-gradient(45deg, var(--truth-crimson), #D32F2F);
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-crimson);
+  animation: pulse-crimson 2s infinite;
+}
+
+.btn-crimson:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-crimson), var(--shadow-dark);
+}
+
+/* 覆盖 Mantine 按钮文本可读性（全局） */
+.mantine-Button-root {
+  color: #FFFFFF !important; /* 浅色文字适配深色背景 */
+  font-weight: 800 !important;
+  letter-spacing: 0.2px !important;
+  text-shadow: none !important;
+  min-height: 46px !important; /* 防止高度过小导致文本挤压 */
+}
+
+.mantine-Button-root .mantine-Button-inner,
+.mantine-Button-label {
+  color: #FFFFFF !important;
+  line-height: 1.2 !important; /* 提升可读性，避免行高过小 */
+  font-size: inherit !important; /* 继承父级字号，避免被重置成过小值 */
+}
+
+/* 在关键容器中再次加强按钮文字对比度（用于弹窗与答题卡） */
+.mystery-modal .mantine-Button-root,
+.mystery-modal .mantine-Button-label,
+.mystery-card .mantine-Button-root,
+.mystery-card .mantine-Button-label {
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+
+.mantine-Button-root:where(:hover, :focus),
+.mantine-Button-root.mantine-active {
+  filter: none;
+}
+
+.mantine-Button-root[disabled] {
+  color: #FFFFFF !important;
+  opacity: 1;
+  background-color: #666666 !important;
+  border-color: #666666 !important;
+  cursor: not-allowed;
+}
+
+/* 脉冲动画 */
+@keyframes pulse-crimson {
+  0% {
+    box-shadow: var(--shadow-crimson);
+  }
+  50% {
+    box-shadow: var(--shadow-crimson), 0 0 30px rgba(230, 57, 70, 0.6);
+  }
+  100% {
+    box-shadow: var(--shadow-crimson);
+  }
+}
+
+/* 输入框样式 */
+.mystery-input {
+  background: var(--card-background);
+  border: 1px solid var(--border-muted);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.mystery-input:focus {
+  border-color: var(--cyber-blue);
+  box-shadow: 0 0 10px rgba(0, 194, 255, 0.3);
+  outline: none;
+}
+
+.mystery-input::placeholder {
+  color: var(--text-disabled);
+}
+
+/* 文本区域样式 */
+.mystery-textarea {
+  background: var(--card-background);
+  border: 1px solid var(--border-muted);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 12px 16px;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.mystery-textarea:focus {
+  border-color: var(--cyber-blue);
+  box-shadow: 0 0 10px rgba(0, 194, 255, 0.3);
+  outline: none;
+}
+
+/* 模态框样式 */
+.mystery-modal {
+  background: var(--secondary-dark);
+  border: 1px solid var(--border-primary);
+  border-radius: 16px;
+  box-shadow: var(--shadow-dark), var(--shadow-cyber);
+}
+
+/* 聊天消息样式 */
+.chat-message {
+  background: var(--card-background);
+  border-left: 3px solid var(--cyber-blue);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.chat-message:hover {
+  background: var(--secondary-dark);
+  border-left-color: var(--tech-green);
+}
+
+.chat-message.user {
+  border-left-color: var(--investigation-amber);
+  background: rgba(255, 183, 77, 0.1);
+}
+
+.chat-message.assistant {
+  border-left-color: var(--cyber-blue);
+  background: rgba(0, 194, 255, 0.1);
+}
+
+/* 角色卡片样式 */
+.character-card {
+  background: var(--secondary-dark);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.character-card:hover {
+  border-color: var(--tech-green);
+  box-shadow: var(--shadow-cyber);
+  transform: translateY(-2px);
+}
+
+.character-card.active {
+  border-color: var(--investigation-amber);
+  box-shadow: var(--shadow-amber);
+  background: rgba(255, 183, 77, 0.1);
+}
+
+/* 加载动画 */
+.loading-cyber {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-muted);
+  border-radius: 50%;
+  border-top-color: var(--cyber-blue);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 标题样式 */
+.mystery-title {
+  color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(0, 194, 255, 0.5);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.mystery-subtitle {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 分割线样式 */
+.mystery-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+  margin: 20px 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .mystery-card {
+    margin: 8px;
+    border-radius: 8px;
+  }
+  
+  .btn-cyber, .btn-amber, .btn-crimson {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* 特殊效果 */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(45deg, var(--cyber-blue), var(--tech-green));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::before {
+  opacity: 1;
+}
+
+/* 打字机效果 */
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--cyber-blue);
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--cyber-blue) }
+}
+
+/* 悬停发光效果 */
+.hover-glow:hover {
+  box-shadow: 
+    0 0 20px rgba(0, 194, 255, 0.6),
+    0 0 40px rgba(0, 194, 255, 0.4),
+    0 0 60px rgba(0, 194, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 呼吸灯效果 */
+.breathing {
+  animation: breathing 2s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* 闪烁效果 */
+.blink {
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1 }
+  51%, 100% { opacity: 0.3 }
+}
+
+/* 渐变文字效果 */
+.gradient-text {
+  background: linear-gradient(45deg, var(--cyber-blue), var(--tech-green), var(--investigation-amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 卡片翻转效果 */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* 粒子背景效果 */
+.particle-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, var(--cyber-blue), transparent),
+    radial-gradient(2px 2px at 40px 70px, var(--tech-green), transparent),
+    radial-gradient(1px 1px at 90px 40px, var(--investigation-amber), transparent),
+    radial-gradient(1px 1px at 130px 80px, var(--cyber-blue), transparent),
+    radial-gradient(2px 2px at 160px 30px, var(--tech-green), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: particle-float 20s linear infinite;
+  opacity: 0.1;
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0px) }
+  100% { transform: translateY(-100px) }
+}
+
+/* 极光动画效果 */
+@keyframes aurora-glow {
+  0% {
+    background: linear-gradient(135deg, 
+      rgba(0, 194, 255, 0.15) 0%, 
+      rgba(138, 43, 226, 0.15) 25%, 
+      rgba(255, 20, 147, 0.15) 50%, 
+      rgba(0, 255, 127, 0.15) 75%, 
+      rgba(0, 194, 255, 0.15) 100%);
+    border-color: rgba(0, 194, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.3);
+  }
+  25% {
+    background: linear-gradient(135deg, 
+      rgba(138, 43, 226, 0.15) 0%, 
+      rgba(255, 20, 147, 0.15) 25%, 
+      rgba(0, 255, 127, 0.15) 50%, 
+      rgba(0, 194, 255, 0.15) 75%, 
+      rgba(138, 43, 226, 0.15) 100%);
+    border-color: rgba(138, 43, 226, 0.4);
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+  }
+  50% {
+    background: linear-gradient(135deg, 
+      rgba(255, 20, 147, 0.15) 0%, 
+      rgba(0, 255, 127, 0.15) 25%, 
+      rgba(0, 194, 255, 0.15) 50%, 
+      rgba(138, 43, 226, 0.15) 75%, 
+      rgba(255, 20, 147, 0.15) 100%);
+    border-color: rgba(255, 20, 147, 0.4);
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+  }
+  75% {
+    background: linear-gradient(135deg, 
+      rgba(0, 255, 127, 0.15) 0%, 
+      rgba(0, 194, 255, 0.15) 25%, 
+      rgba(138, 43, 226, 0.15) 50%, 
+      rgba(255, 20, 147, 0.15) 75%, 
+      rgba(0, 255, 127, 0.15) 100%);
+    border-color: rgba(0, 255, 127, 0.4);
+    box-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
+  }
+  100% {
+    background: linear-gradient(135deg, 
+      rgba(0, 194, 255, 0.15) 0%, 
+      rgba(138, 43, 226, 0.15) 25%, 
+      rgba(255, 20, 147, 0.15) 50%, 
+      rgba(0, 255, 127, 0.15) 75%, 
+      rgba(0, 194, 255, 0.15) 100%);
+    border-color: rgba(0, 194, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.3);
+  }
+}
+
+@keyframes aurora-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes aurora-separator {
+  0% {
+    background: linear-gradient(90deg, transparent 0%, #00C2FF 15%, #00C2FF 85%, transparent 100%);
+    box-shadow: 0 0 12px rgba(0, 194, 255, 0.4);
+  }
+  25% {
+    background: linear-gradient(90deg, transparent 0%, #8A2BE2 15%, #8A2BE2 85%, transparent 100%);
+    box-shadow: 0 0 12px rgba(138, 43, 226, 0.4);
+  }
+  50% {
+    background: linear-gradient(90deg, transparent 0%, #FF1493 15%, #FF1493 85%, transparent 100%);
+    box-shadow: 0 0 12px rgba(255, 20, 147, 0.4);
+  }
+  75% {
+    background: linear-gradient(90deg, transparent 0%, #00C2FF 15%, #00C2FF 85%, transparent 100%);
+    box-shadow: 0 0 12px rgba(0, 194, 255, 0.4);
+  }
+  100% {
+    background: linear-gradient(90deg, transparent 0%, #00C2FF 15%, #00C2FF 85%, transparent 100%);
+    box-shadow: 0 0 12px rgba(0, 194, 255, 0.4);
+  }
+}
+
+.character-info-aurora {
+  animation: aurora-glow 4s ease-in-out infinite, aurora-pulse 2s ease-in-out infinite;
+}
+
+.character-separator-aurora {
+  animation: aurora-separator 3s ease-in-out infinite;
+}
+
+.character-separator-aurora::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+  animation: aurora-pulse 1.5s ease-in-out infinite;
+}
+
+/* 聊天界面响应式设计 */
+@media (max-width: 1200px) {
+  .chat-input-container {
+    left: 200px !important;
+    right: 200px !important;
+  }
+  
+  .chat-main-container {
+    padding: 20px 200px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-input-container {
+    left: 20px !important;
+    right: 20px !important;
+  }
+  
+  .chat-main-container {
+    padding: 20px !important;
+  }
+}
