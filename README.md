@@ -316,8 +316,8 @@ make setup         # 一键设置（安装工具 + 依赖）
 **数据库问题：** 删除 `api/murder_mystery.db` 后重启后端，数据库会自动重建。
 
 ## 联系方式
-** 个人微信 **
-<img alt="游戏界面" src="微信.jpg" width="80%">
+
+<img alt="个人微信 " src="微信.jpg" width="80%">
 ## 致谢
 
 本项目基于 [AI Murder Mystery Hackathon](https://github.com/ironman5366/ai-murder-mystery-hackathon) 项目开发，原始项目由 [Paul Scotti](https://paulscotti.github.io/) 和 [Will Beddow](https://www.willbeddow.com/) 创建。
